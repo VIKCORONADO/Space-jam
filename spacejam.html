@@ -10,17 +10,8 @@
       --white: #ffffff;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: var(--dark-blue);
-      color: var(--white);
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, Helvetica, sans-serif; background-color: var(--dark-blue); color: var(--white); }
 
     nav {
       background-color: var(--white);
@@ -30,157 +21,68 @@
       padding: 10px 30px;
     }
 
-    nav img {
-      height: 40px;
-      margin-right: 20px;
-    }
+    nav img { height: 40px; margin-right: 20px; }
+    nav a, nav label { text-decoration: none; color: #000; margin-right: 15px; font-size: 14px; font-weight: bold; cursor: pointer; }
+    nav a:hover, nav label:hover { text-decoration: underline; }
 
-    nav a, nav label {
-      text-decoration: none;
-      color: #000;
-      margin-right: 15px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    /* Secciones por defecto */
+    .hero, .content, footer, .cast-section, .media-section, .more-section { display: block; }
 
-    nav a:hover, nav label:hover {
-      text-decoration: underline;
-    }
+    .cast-section, .media-section, .more-section { display: none; background-color: #fff; color: #000; padding: 40px; min-height: 300px; }
 
-    /* Checkbox hack */
+    #showCast:checked ~ .cast-section { display: block; }
+    #showMedia:checked ~ .media-section { display: block; }
+    #showMore:checked ~ .more-section { display: block; }
+
+    /* Ocultar el resto cuando se selecciona una sección */
     #showCast:checked ~ .hero,
     #showCast:checked ~ .content,
-    #showCast:checked ~ footer {
-      display: none;
-    }
-
-    #showCast:checked ~ .cast-section {
-      display: block;
-    }
+    #showCast:checked ~ footer,
+    #showMedia:checked ~ .hero,
+    #showMedia:checked ~ .content,
+    #showMedia:checked ~ footer,
+    #showMore:checked ~ .hero,
+    #showMore:checked ~ .content,
+    #showMore:checked ~ footer { display: none; }
 
     /* Cast section */
-    .cast-section {
-      display: none;
-      background-color: #ffffff;
-      color: #000;
-      padding: 40px;
-      min-height: 300px;
-    }
-
-    .cast-section h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .cast-section div {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .cast-section img {
-      width: 150px;
-      border-radius: 8px;
-    }
+    .cast-section h2 { text-align: center; margin-bottom: 20px; }
+    .cast-section div { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cast-section img { width: 150px; border-radius: 8px; }
 
     /* Hero y contenido principal */
-    .hero, .content, footer {
-      display: block;
-    }
+    .hero { display: flex; align-items: center; justify-content: center; background-color: var(--dark-blue); background-size: cover; background-position: right center; height: 400px; text-align: left; }
+    .content { background-color: #fff; color: #000; display: flex; justify-content: center; gap: 40px; padding: 60px 0; }
 
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--dark-blue);
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/1/14/pace_Jam_ster.jpg');
-      background-size: cover;
-      background-position: right center;
-      height: 400px;
-      text-align: left;
-    }
+    .card { width: 260px; text-align: left; }
+    .card img { width: 100%; border-radius: 8px; }
+    .card h3 { margin-top: 10px; font-size: 16px; font-weight: bold; }
+    .card p { font-size: 13px; color: #333; }
 
-    .hero h1 {
-      font-size: 28px;
-      font-weight: bold;
-      color: var(--white);
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      margin-left: 80px;
-    }
-
-    .content {
-      background-color: #ffffff;
-      color: #000;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 60px 0;
-    }
-
-    .card {
-      width: 260px;
-      text-align: left;
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .card h3 {
-      margin-top: 10px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .card p {
-      font-size: 13px;
-      color: #333;
-    }
-
-    footer {
-      text-align: left;
-      padding: 20px;
-      font-size: 10px;
-      color: #ccc;
-    }
-
-    footer p {
-      width: 80%;
-      margin: 0 auto;
-    }
-
-    .social {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding-bottom: 20px;
-    }
-
-    .social i {
-      font-size: 18px;
-      color: white;
-    }
+    footer { text-align: left; padding: 20px; font-size: 10px; color: #ccc; }
+    footer p { width: 80%; margin: 0 auto; }
+    .social { display: flex; justify-content: center; gap: 10px; padding-bottom: 20px; }
+    .social i { font-size: 18px; color: white; }
 
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- Checkbox para Cast -->
+  <!-- Checkboxes ocultos -->
   <input type="checkbox" id="showCast" hidden>
+  <input type="checkbox" id="showMedia" hidden>
+  <input type="checkbox" id="showMore" hidden>
 
+  <!-- Barra de navegación -->
   <nav>
     <img src="logo-spacejam.png" alt="Space Jam Logo">
-    <a href="#" onclick="document.getElementById('showCast').checked = false;">HOME</a>
-    <label for="showCast">CAST</label>
-    <a href="#">MEDIA</a>
-    <a href="#">MORE</a>
+    <a href="#" onclick="document.getElementById('showCast').checked=false; document.getElementById('showMedia').checked=false; document.getElementById('showMore').checked=false;">HOME</a>
+    <label for="showCast" onclick="document.getElementById('showMedia').checked=false; document.getElementById('showMore').checked=false;">CAST</label>
+    <label for="showMedia" onclick="document.getElementById('showCast').checked=false; document.getElementById('showMore').checked=false;">MEDIA</label>
+    <label for="showMore" onclick="document.getElementById('showCast').checked=false; document.getElementById('showMedia').checked=false;">MORE</label>
   </nav>
 
-  <!-- Sección Cast -->
+  <!-- Secciones -->
   <section class="cast-section">
     <h2>Meet the Cast</h2>
     <div>
@@ -188,18 +90,22 @@
       <img src="lola.png" alt="Lola Bunny">
       <img src="daffy.png" alt="Daffy Duck">
     </div>
-    <p style="text-align: center; margin-top: 20px;">
-      Bugs Bunny, Lola Bunny, Daffy Duck, and more stars appear in Space Jam!
-    </p>
+    <p style="text-align:center; margin-top:20px;">Bugs Bunny, Lola Bunny, Daffy Duck, and more stars appear in Space Jam!</p>
+  </section>
+
+  <section class="media-section">
+    <h2>Media Section</h2>
+  </section>
+
+  <section class="more-section">
+    <h2>More Section</h2>
   </section>
 
   <!-- Página principal -->
   <section class="hero">
    <div style="display: grid; grid-template-columns: 1fr 100px; gap: 30px; align-items: center;">
-      <p style="font-size: 24px; text-align: right; margin: 0;">
-        GET READY TO JAM
-      </p>
-      <img src="Posterspacejam.png"  style="width: 500px; height: auto;">
+      <p style="font-size: 24px; text-align: right; margin: 0;">GET READY TO JAM</p>
+      <img src="Posterspacejam.png" style="width: 500px; height: auto;">
    </div>
   </section>
 
