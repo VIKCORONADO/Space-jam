@@ -9,7 +9,7 @@
       --dark-blue: #001f3f;
       --white: #ffffff;
     }
-    
+
     * {
       margin: 0;
       padding: 0;
@@ -22,7 +22,6 @@
       color: var(--white);
     }
 
-    /* Barra de navegación */
     nav {
       background-color: var(--white);
       display: flex;
@@ -36,19 +35,61 @@
       margin-right: 20px;
     }
 
-    nav a {
+    nav a, nav label {
       text-decoration: none;
       color: #000;
       margin-right: 15px;
       font-size: 14px;
       font-weight: bold;
+      cursor: pointer;
     }
 
-    nav a:hover {
+    nav a:hover, nav label:hover {
       text-decoration: underline;
     }
 
-    /* Sección principal */
+    /* Checkbox hack */
+    #showCast:checked ~ .hero,
+    #showCast:checked ~ .content,
+    #showCast:checked ~ footer {
+      display: none;
+    }
+
+    #showCast:checked ~ .cast-section {
+      display: block;
+    }
+
+    /* Cast section */
+    .cast-section {
+      display: none;
+      background-color: #ffffff;
+      color: #000;
+      padding: 40px;
+      min-height: 300px;
+    }
+
+    .cast-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .cast-section div {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cast-section img {
+      width: 150px;
+      border-radius: 8px;
+    }
+
+    /* Hero y contenido principal */
+    .hero, .content, footer {
+      display: block;
+    }
+
     .hero {
       display: flex;
       align-items: center;
@@ -69,7 +110,6 @@
       margin-left: 80px;
     }
 
-    /* Sección del contenido */
     .content {
       background-color: #ffffff;
       color: #000;
@@ -100,7 +140,6 @@
       color: #333;
     }
 
-    /* Pie de página */
     footer {
       text-align: left;
       padding: 20px;
@@ -124,28 +163,44 @@
       font-size: 18px;
       color: white;
     }
+
   </style>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
+  <!-- Checkbox para Cast -->
+  <input type="checkbox" id="showCast" hidden>
+
   <nav>
     <img src="logo-spacejam.png" alt="Space Jam Logo">
-    <a href="#">HOME</a>
-    <a href="#">CAST</a>
+    <a href="#" onclick="document.getElementById('showCast').checked = false;">HOME</a>
+    <label for="showCast">CAST</label>
     <a href="#">MEDIA</a>
     <a href="#">MORE</a>
   </nav>
 
+  <!-- Sección Cast -->
+  <section class="cast-section">
+    <h2>Meet the Cast</h2>
+    <div>
+      <img src="bugs.png" alt="Bugs Bunny">
+      <img src="lola.png" alt="Lola Bunny">
+      <img src="daffy.png" alt="Daffy Duck">
+    </div>
+    <p style="text-align: center; margin-top: 20px;">
+      Bugs Bunny, Lola Bunny, Daffy Duck, and more stars appear in Space Jam!
+    </p>
+  </section>
+
+  <!-- Página principal -->
   <section class="hero">
    <div style="display: grid; grid-template-columns: 1fr 100px; gap: 30px; align-items: center;">
-  <p style="font-size: 24px; text-align: right; margin: 0;">
-    GET READY TO JAM
-  </p>
-  <img src="Posterspacejam.png"  style="width: 500px; height: auto;">
-</div>
-
-
+      <p style="font-size: 24px; text-align: right; margin: 0;">
+        GET READY TO JAM
+      </p>
+      <img src="Posterspacejam.png"  style="width: 500px; height: auto;">
+   </div>
   </section>
 
   <section class="content">
@@ -169,7 +224,6 @@
       <i class="fab fa-twitter"></i>
     </div>
   </footer>
-  
+
 </body>
 </html>
-  
